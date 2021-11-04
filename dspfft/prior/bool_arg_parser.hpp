@@ -1,5 +1,5 @@
-#ifndef BOOL_ARG_PARSER_HPP__
-#define BOOL_ARG_PARSER_HPP__
+#ifndef PRIOR_BOOL_ARG_PARSER_HPP__
+#define PRIOR_BOOL_ARG_PARSER_HPP__
 
 #include "prior.h"
 
@@ -13,5 +13,5 @@ parse_bool_arg(::std::vector<char*> arg_pats, int argc, char* argv[]);
 
 DSPFFT_NAMESPACE_END
 
-#endif // #ifndef BOOL_ARG_PARSER_HPP__
+#endif // #ifndef PRIOR_BOOL_ARG_PARSER_HPP__
 

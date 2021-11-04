@@ -1,5 +1,5 @@
-#ifndef BOOL_ARG_PARSER_FOR_C_H__
-#define BOOL_ARG_PARSER_FOR_C_H__
+#ifndef PRIOR_BOOL_ARG_PARSER_FOR_C_H__
+#define PRIOR_BOOL_ARG_PARSER_FOR_C_H__
 
 #include "prior.h"
 
@@ -8,4 +8,4 @@ PRIOR_EXTERN_C
 char *
 parse_bool_arg_for_c(char **arg_pats, int pat_num, int argc, char *argv[]);
 
-#endif // #ifndef BOOL_ARG_PARSER_FOR_C_H__
+#endif // #ifndef PRIOR_BOOL_ARG_PARSER_FOR_C_H__
