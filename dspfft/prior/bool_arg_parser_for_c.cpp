@@ -16,7 +16,7 @@ parse_bool_arg_for_c(char **arg_pats, int pat_num, int argc, char *argv[])
         {
            arg_pat_vec[i] = arg_pats[i];
         }
-        auto res_vec = dsp_fft::parse_bool_arg(arg_pat_vec, argc, argv);
+        auto res_vec = dspfft::parse_bool_arg(arg_pat_vec, argc, argv);
         char *res = (char*)malloc(res_vec.size() * sizeof(char));
         ::std::memcpy(res, res_vec.data(), res_vec.size() * sizeof(char));
         return res;
