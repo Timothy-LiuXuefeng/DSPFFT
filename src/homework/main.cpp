@@ -34,6 +34,7 @@ template <typename T, typename = typename ::std::enable_if<::std::is_unsigned<T>
     return static_cast<::std::uint64_t>((x >> 32) | (x << 32));
 }
 
+// FFT by frequency
 template <typename floating_type, typename = typename ::std::enable_if<::std::is_floating_point<floating_type>::value>::type>
 [[nodiscard]] ::std::vector<::std::complex<floating_type>> base_2_fft(const ::std::vector<::std::complex<floating_type>>& x)
 {
@@ -65,7 +66,7 @@ template <typename floating_type, typename = typename ::std::enable_if<::std::is
             for (size_type idx = offset; idx < offset + half_of_group; ++idx)
             {
                 result[idx] = input[idx] + input[idx + half_of_group];
-                result[idx + half_of_group] = (input[idx] - input[idx + half_of_group]) * w_n[idx * stage_inc];
+                result[idx + half_of_group] = (input[idx] - input[idx + half_of_group]) * w_n[(idx - offset) * stage_inc];
             }
         }
         ::std::copy(result.begin(), result.end(), input.begin());
