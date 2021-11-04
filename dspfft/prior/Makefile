@@ -1,5 +1,6 @@
 
-COMPILER_ALL_PATH?=g++ -std=c++11 -O2 -Wall -Wpedantic -Wextra -Werror
+COMPILER_OPTIONS?=g++ -std=c++11 -O2 -Wall -Wpedantic -Wextra -Werror
+COMPILER_ALL_OPTIONS=$(COMPILER_OPTIONS)
 
 BIN_DIR=./bin
 DEPS_DIR=./deps
@@ -15,10 +16,10 @@ $(TARGET): $(OBJECTS)
 	ar -o $@ -cr $^
 
 $(DEPS): $(DEPS_DIR)/%.d: %.cpp
-	$(COMPILER_ALL_PATH) -o $@ -MM $<
+	$(COMPILER_ALL_OPTIONS) -o $@ -MM $<
 
 $(OBJECTS): $(BIN_DIR)/%.o: %.cpp
-	$(COMPILER_ALL_PATH) -o $@ -c $<
+	$(COMPILER_ALL_OPTIONS) -o $@ -c $<
 
 include $(DEPS)
 

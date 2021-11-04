@@ -31,12 +31,12 @@
 
 #ifdef __cplusplus
 
-#   define PRIOR_CONSTEXPR constexpr inline
+#   define PRIOR_CONSTEXPR constexpr
 
 #   if defined(PRIOR_HAS_CXX14)
-#       define PRIOR_CXX14_CONSTEXPR constexpr inline
+#       define PRIOR_CXX14_CONSTEXPR constexpr
 #   else
-#       define PRIOR_CXX14_CONSTEXPR inline
+#       define PRIOR_CXX14_CONSTEXPR
 #   endif
 
 #endif // #ifdef __cplusplus
