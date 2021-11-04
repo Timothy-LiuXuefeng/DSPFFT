@@ -6,9 +6,11 @@
 #include <numbers>
 #include <algorithm>
 #include <type_traits>
-#include <cassert>
-#include <iterator>
 #include <cstdint>
+#include <numeric>
+#include <functional>
+
+#include <iterator>
 
 constexpr double e_v = 2.718281828459045235360287471352662498L;
 constexpr double pi_v = 3.141592653589793238462643383279502884L;
@@ -34,21 +36,30 @@ template <typename T, typename = typename ::std::enable_if<::std::is_unsigned<T>
     return static_cast<::std::uint64_t>((x >> 32) | (x << 32));
 }
 
+// Generate w_N for DFT
+template <typename floating_type, typename = typename ::std::enable_if<::std::is_floating_point<floating_type>::value>::type>
+[[nodiscard]] inline ::std::vector<::std::complex<floating_type>> generate_w_n(typename ::std::vector<::std::complex<floating_type>>::size_type n)
+{
+    using complex_type = ::std::complex<floating_type>;
+    ::std::vector<complex_type> w_n(n);
+    ::std::generate(w_n.begin(), w_n.end(), [n, i = 0]() mutable { return ::std::pow(complex_type(e_v, 0), complex_type(0, -2.0L * pi_v * (i++) / n)); });
+    return w_n;
+}
+
 // FFT by frequency
 template <typename floating_type, typename = typename ::std::enable_if<::std::is_floating_point<floating_type>::value>::type>
 [[nodiscard]] ::std::vector<::std::complex<floating_type>> base_2_fft(const ::std::vector<::std::complex<floating_type>>& x)
 {
+    using size_type = decltype(x.size());
+    using complex_type = ::std::complex<floating_type>;
+
     if (x.size() == 0) return {};
-    if (x.size() & x.size() - 1 != 0)   // not pow of 2
+    if ((x.size() & (x.size() - 1)) != 0)   // not pow of 2
     {
         throw ::std::invalid_argument{"The length of signal is not pow of 2."};
     }
 
-    using size_type = decltype(x.size());
-    using complex_type = ::std::complex<floating_type>;
-
-    ::std::vector<complex_type> w_n(x.size());
-    ::std::generate(w_n.begin(), w_n.end(), [n = 0, &x]() mutable { return ::std::pow(complex_type(e_v, 0), complex_type(0, -2.0L * pi_v * (n++) / x.size())); });
+    auto w_n = generate_w_n<floating_type>(x.size());
 
     ::std::vector<complex_type> input(x.size());
     ::std::copy(x.begin(), x.end(), input.begin());
@@ -79,13 +90,39 @@ template <typename floating_type, typename = typename ::std::enable_if<::std::is
     return result;
 }
 
+// Calculate DFT directly
+template <typename floating_type, typename = typename ::std::enable_if<::std::is_floating_point<floating_type>::value>::type>
+[[nodiscard]] ::std::vector<::std::complex<floating_type>> dft(const ::std::vector<::std::complex<floating_type>>& x)
+{
+    using size_type = decltype(x.size());
+    using complex_type = ::std::complex<floating_type>;
+
+    if (x.size() == 0) return {};
+
+    auto w_n = generate_w_n<floating_type>(x.size());
+    ::std::vector<complex_type> result(x.size());
+    for (size_type k = 0; k < x.size(); ++k)
+    {
+        result[k] = ::std::inner_product(x.begin(), x.end(), w_n.begin(), complex_type{0}, ::std::plus<complex_type>{},
+                             [k](complex_type x_n, complex_type w_n) { return x_n * ::std::pow(w_n, k); });
+    }
+    
+    return result;
+}
+
 int main()
 {
-    ::std::vector<::std::complex<double>> v { 1, 2, 3, 4, 5, 6, 7, 8 };
-    auto r = base_2_fft(v);
+    ::std::vector<::std::complex<double>> v { 1, 8, 3, ::std::complex<double>(5, 6), 5, 6, 7, 8 };
+    auto r1 = base_2_fft(v);
+    auto r2 = dft(v);
     ::std::cout.precision(4);
     ::std::cout.flags(::std::ios::fixed);
-    for (auto&& z : r)
+    for (auto&& z : r1)
+    {
+        ::std::cout << z.real() << "+j*" << z.imag() << ' ';
+    }
+    ::std::endl(::std::cout);
+    for (auto&& z : r2)
     {
         ::std::cout << z.real() << "+j*" << z.imag() << ' ';
     }
