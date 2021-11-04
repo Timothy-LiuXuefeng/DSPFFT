@@ -3,7 +3,7 @@ COMPILER_ALL_PATH?=g++ -std=c++11 -O2 -Wall -Wpedantic -Wextra -Werror
 
 BIN_DIR=./bin
 DEPS_DIR=./deps
-RAW_OBJECTS=bool_arg_parser_for_c.o bool_arg_parser.o
+RAW_OBJECTS=$(patsubst %.cpp,%.o,$(shell ls *.cpp))
 TARGET=$(BIN_DIR)/libprior.a
 OBJECTS=$(patsubst %.o,$(BIN_DIR)/%.o,$(RAW_OBJECTS))
 DEPS=$(patsubst %.o, $(DEPS_DIR)/%.d,$(RAW_OBJECTS))
