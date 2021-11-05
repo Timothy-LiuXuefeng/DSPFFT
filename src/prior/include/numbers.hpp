@@ -5,7 +5,7 @@
 
 #include <type_traits>
 
-DSPFFT_NAMESPACE_BEGIN
+PRIOR_NAMESPACE_BEGIN
 
 namespace numbers {
 
@@ -22,6 +22,6 @@ namespace numbers {
     };
 }
 
-DSPFFT_NAMESPACE_END
+PRIOR_NAMESPACE_END
 
 #endif // #ifndef PRIOR_NUMBERS_HPP__

@@ -5,7 +5,7 @@
 #include <unordered_set>
 #include <stdexcept>
 
-DSPFFT_NAMESPACE_BEGIN
+PRIOR_NAMESPACE_BEGIN
 
 ::std::vector<char>
 parse_bool_arg(::std::vector<char*> arg_pats, int argc, char* argv[])
@@ -27,4 +27,4 @@ parse_bool_arg(::std::vector<char*> arg_pats, int argc, char* argv[])
     return result;
 }
 
-DSPFFT_NAMESPACE_END
+PRIOR_NAMESPACE_END

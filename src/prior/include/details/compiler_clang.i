@@ -28,6 +28,7 @@
 
 #define PRIOR_FORCED_INLINE __attribute__((__always_inline__)) __inline__
 #define PRIOR_NODISCARD __attribute__((__warn_unused_result__))
+#define PRIOR_DECLARE_UNUSED_VARIABLE(x) ((void)(x))
 
 #ifdef __cplusplus
 

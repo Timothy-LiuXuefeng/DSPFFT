@@ -9,6 +9,8 @@
 #   include <stddef.h>
 #endif // #ifdef __cplusplus
 
+#include "dspfft_decl.h"
+
 DSPFFT_NAMESPACE_BEGIN
 
 typedef struct

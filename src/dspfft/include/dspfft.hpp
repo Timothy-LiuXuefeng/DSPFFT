@@ -8,6 +8,8 @@
 #include <vector>
 #include <complex>
 
+#include "dspfft_decl.h"
+
 DSPFFT_NAMESPACE_BEGIN
 
 template <typename floating_type, typename = typename ::std::enable_if<::std::is_floating_point<floating_type>::value>::type>

@@ -26,6 +26,7 @@
 
 #define PRIOR_FORCED_INLINE __forceinline
 #define PRIOR_NODISCARD _Check_return_
+#define PRIOR_DECLARE_UNUSED_VARIABLE(x) ((void)(x))
 
 #ifdef __cplusplus
 

@@ -1,9 +1,14 @@
 #include <iostream>
 #include <dspfft.hpp>
+#include <prior/include/bool_arg_parser.hpp>
 #include "format_complex.hpp"
 
-int main()
+int main(int argc, char* argv[])
 {
+    PRIOR_DECLARE_UNUSED_VARIABLE(argc);
+    PRIOR_DECLARE_UNUSED_VARIABLE(argv);
+
+    // ::std::vector<char*>
 
     ::std::vector<::std::complex<double>> v;
     auto r1 = dspfft::base_2_fft(v);
