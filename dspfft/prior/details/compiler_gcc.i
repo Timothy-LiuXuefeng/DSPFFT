@@ -39,4 +39,10 @@
 #       define PRIOR_CXX14_CONSTEXPR
 #   endif
 
+#   if defined(PRIOR_HAS_CXX17)
+#       define PRIOR_CONSTEXPR_IF if constexpr
+#   else
+#       define PRIOR_CONSTEXPR_IF if
+#   endif
+
 #endif // #ifdef __cplusplus

@@ -1,12 +1,14 @@
-#include "bool_arg_parser.h"
+#include "raw_bool_arg_parser.h"
 #include "bool_arg_parser.hpp"
 
 #include <cstdlib>
 #include <cstring>
 
+DSPFFT_NAMESPACE_BEGIN
+
 PRIOR_EXTERN_C
 char *
-parse_bool_arg(char **arg_pats, int pat_num, int argc, char *argv[])
+raw_parse_bool_arg(char **arg_pats, int pat_num, int argc, char *argv[])
 {
     if (pat_num < 0) return NULL;
     try
@@ -27,3 +29,5 @@ parse_bool_arg(char **arg_pats, int pat_num, int argc, char *argv[])
     }
     return NULL;
 }
+
+DSPFFT_NAMESPACE_END
