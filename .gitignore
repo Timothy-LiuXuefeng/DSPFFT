@@ -391,3 +391,6 @@ FodyWeavers.xsd
 bin/
 deps/
 /build/
+
+# GNU nano cache file
+*.swp

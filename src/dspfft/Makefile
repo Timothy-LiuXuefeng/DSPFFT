@@ -19,7 +19,7 @@ build: $(OBJECTS)
 # 	ar -o $@ -cr $^
 
 $(DEPS): $(DEPS_DIR)/%.d: ./cpp/%.cpp | $(DEPS_DIR)
-	$(COMPILER_ALL_OPTIONS) $(ADDITIONAL_INCLUDE) -o $@ -MM $<
+	$(COMPILER_ALL_OPTIONS) $(ADDITIONAL_INCLUDE) -MM $< | sed -e 1's,^,$(BIN_DIR)/,' > $@
 
 $(DEPS_DIR):
 	mkdir -p $@

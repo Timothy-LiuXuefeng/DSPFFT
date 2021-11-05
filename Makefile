@@ -11,16 +11,18 @@ PROJECTS=prior dspfft
 build: $(PROJECTS)
 	mkdir -p ./build
 	mkdir -p ./build/include
+	mkdir -p ./build/include/prior
 	mkdir -p ./build/bin
 	ar -o ./build/bin/libdspfft.a -cr ./src/prior/bin/*.o ./src/dspfft/bin/*.o
 	cp -r ./src/prior/include ./build/include/prior/
 	cp ./src/dspfft/include/* ./build/include/
 
 .PHONY: test
-test: build
+test:
 	make -C ./src/homework "COMPILER_OPTIONS=$(COMPILER_OPTIONS)"
-	cp ./src/homework/bin/main.out ./build/bin/
-	chmod +x ./build/bin/main.out
+	mkdir -p ./build/test
+	cp ./src/homework/bin/main.out ./build/test/
+	chmod +x ./build/test/main.out
 
 .PHONY: $(PROJECTS)
 $(PROJECTS):
@@ -34,4 +36,5 @@ clean: $(CLEAN_PROJECTS)
 $(CLEAN_PROJECTS):
 	-rm -rf ./build/*
 	-rmdir ./build
+	make -C ./src/homework clean
 	make -C $(patsubst clean_%,./src/%,$@) clean

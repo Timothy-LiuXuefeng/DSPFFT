@@ -18,7 +18,7 @@ build: $(OBJECTS)
 # 	ar -o $@ -cr $^
 
 $(DEPS): $(DEPS_DIR)/%.d: ./cpp/%.cpp | $(DEPS_DIR)
-	$(COMPILER_ALL_OPTIONS) -o $@ -MM $<
+	$(COMPILER_ALL_OPTIONS) -MM $< | sed -e 1's,^,$(BIN_DIR)/,' > $@
 
 $(OBJECTS): $(BIN_DIR)/%.o: ./cpp/%.cpp | $(BIN_DIR)
 	$(COMPILER_ALL_OPTIONS) -o $@ -c $<

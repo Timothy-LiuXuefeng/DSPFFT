@@ -23,7 +23,7 @@ $(TARGET): $(OBJECTS)
 	$(COMPILER_ALL_OPTIONS) -o $@ $^ $(ADDITIONAL_LIB_DIR) $(ADDITIONAL_LIB)
 
 $(DEPS): $(DEPS_DIR)/%.d: %.cpp
-	$(COMPILER_ALL_OPTIONS) $(ADDITIONAL_INCLUDE) -o $@ -MM $<
+	$(COMPILER_ALL_OPTIONS) $(ADDITIONAL_INCLUDE) -MM $< | sed -e 1's,^,$(BIN_DIR)/,' > $@
 
 $(OBJECTS): $(BIN_DIR)/%.o: %.cpp
 	$(COMPILER_ALL_OPTIONS) $(ADDITIONAL_INCLUDE) -o $@ -c $<
@@ -32,5 +32,5 @@ include $(DEPS)
 
 .PHONY: clean
 clean:
-	-rm $(DEBUG_TARGET) $(OBJECTS) $(DEPS)
+	-rm $(TARGET) $(OBJECTS) $(DEPS)
 	-rmdir $(DEPS_DIR) $(BIN_DIR)
