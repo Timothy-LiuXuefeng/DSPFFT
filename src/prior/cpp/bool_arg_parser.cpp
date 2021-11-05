@@ -1,4 +1,4 @@
-#include "bool_arg_parser.hpp"
+#include "../include/bool_arg_parser.hpp"
 
 #include <vector>
 #include <string>

@@ -390,3 +390,4 @@ FodyWeavers.xsd
 # build files
 bin/
 deps/
+/build/

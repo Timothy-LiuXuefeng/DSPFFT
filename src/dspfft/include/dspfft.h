@@ -1,7 +1,7 @@
 #ifndef DSPFFT_DSPFFT_H__
 #define DSPFFT_DSPFFT_H__
 
-#include <prior/prior.h>
+#include <prior/include/prior.h>
 
 #ifdef __cplusplus
 #   include <cstddef>

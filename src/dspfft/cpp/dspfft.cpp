@@ -1,6 +1,6 @@
-#include "dspfft.hpp"
+#include "../include/dspfft.hpp"
 
-#include <prior/numbers.hpp>
+#include <prior/include/numbers.hpp>
 
 #include <stdexcept>
 #include <algorithm>

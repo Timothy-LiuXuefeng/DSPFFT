@@ -1,5 +1,5 @@
-#include "dspfft.h"
-#include "dspfft.hpp"
+#include "../include/dspfft.h"
+#include "../include/dspfft.hpp"
 
 #include <cstring>
 

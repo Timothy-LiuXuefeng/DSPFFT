@@ -1,5 +1,5 @@
-#include "raw_bool_arg_parser.h"
-#include "bool_arg_parser.hpp"
+#include "../include/raw_bool_arg_parser.h"
+#include "../include/bool_arg_parser.hpp"
 
 #include <cstdlib>
 #include <cstring>

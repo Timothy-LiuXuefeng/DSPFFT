@@ -1,8 +1,8 @@
 #ifndef DSPFFT_DSPFFT_HPP__
 #define DSPFFT_DSPFFT_HPP__
 
-#include <prior/prior.h>
-#include <prior/numbers.hpp>
+#include <prior/include/prior.h>
+#include <prior/include/numbers.hpp>
 
 #include <type_traits>
 #include <vector>

@@ -1,8 +1,9 @@
 COMPILER_OPTIONS?=g++ -std=c++11 -O2 -Wall -Wpedantic -Wextra -Werror
 TARGET_DIR?=./bin
-ADDITIONAL_LIB_DIR?=
+ADDITIONAL_LIB_DIR?=-L../../build/bin
+ADDITIONAL_LIB=-ldspfft
 
-ADDITIONAL_INCLUDE=-I../..
+ADDITIONAL_INCLUDE=-I../../build/include
 COMPILER_ALL_OPTIONS=$(COMPILER_OPTIONS)
 
 BIN_DIR=./bin
@@ -19,7 +20,7 @@ $(shell mkdir -p $(BIN_DIR))
 .PHONY: build, debug
 
 $(TARGET): $(OBJECTS)
-	$(COMPILER_ALL_OPTIONS) -o $@ $^
+	$(COMPILER_ALL_OPTIONS) $(ADDITIONAL_LIB_DIR) $(ADDITIONAL_LIB) -o $@ $^
 
 $(DEPS): $(DEPS_DIR)/%.d: %.cpp
 	$(COMPILER_ALL_OPTIONS) $(ADDITIONAL_INCLUDE) -o $@ -MM $<
