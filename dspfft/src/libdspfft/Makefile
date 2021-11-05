@@ -1,4 +1,3 @@
-
 COMPILER_OPTIONS?=g++ -std=c++11 -O2 -Wall -Wpedantic -Wextra -Werror
 
 ADDITIONAL_INCLUDE=-I../..

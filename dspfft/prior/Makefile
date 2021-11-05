@@ -1,4 +1,3 @@
-
 COMPILER_OPTIONS?=g++ -std=c++11 -O2 -Wall -Wpedantic -Wextra -Werror
 COMPILER_ALL_OPTIONS=$(COMPILER_OPTIONS)
 
