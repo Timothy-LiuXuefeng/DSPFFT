@@ -1,5 +1,5 @@
-#ifndef DSPFFT_HPP__
-#define DSPFFT_HPP__
+#ifndef DSPFFT_DSPFFT_HPP__
+#define DSPFFT_DSPFFT_HPP__
 
 #include <prior/prior.h>
 #include <prior/numbers.hpp>
@@ -38,4 +38,4 @@ DSPFFT_DECLARE_EXTERN_SPECIALIZATION(long double, dft);
 
 DSPFFT_NAMESPACE_END
 
-#endif // #ifndef DSPFFT_HPP__
+#endif // #ifndef DSPFFT_DSPFFT_HPP__
