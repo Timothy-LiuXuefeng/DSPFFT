@@ -1,4 +1,6 @@
 COMPILER_OPTIONS?=g++ -std=c++11 -O2 -Wall -Wpedantic -Wextra -Werror
+TARGET_DIR?=./bin
+ADDITIONAL_LIB_DIR?=
 
 ADDITIONAL_INCLUDE=-I../..
 COMPILER_ALL_OPTIONS=$(COMPILER_OPTIONS)
@@ -6,7 +8,8 @@ COMPILER_ALL_OPTIONS=$(COMPILER_OPTIONS)
 BIN_DIR=./bin
 DEPS_DIR=./deps
 RAW_OBJECTS=$(patsubst %.cpp,%.o,$(shell ls *.cpp))
-DEBUG_TARGET=$(BIN_DIR)/libdspfft.a
+TARGET_NAME=main.out
+TARGET=$(TARGET_DIR)/$(TARGET_NAME)
 OBJECTS=$(patsubst %.o,$(BIN_DIR)/%.o,$(RAW_OBJECTS))
 DEPS=$(patsubst %.o, $(DEPS_DIR)/%.d,$(RAW_OBJECTS))
 
@@ -15,11 +18,8 @@ $(shell mkdir -p $(BIN_DIR))
 
 .PHONY: build, debug
 
-build: $(OBJECTS)
-debug: $(DEBUG_TARGET)
-
-$(DEBUG_TARGET): $(OBJECTS)
-	ar -o $@ -cr $^
+$(TARGET): $(OBJECTS)
+	$(COMPILER_ALL_OPTIONS) -o $@ $^
 
 $(DEPS): $(DEPS_DIR)/%.d: %.cpp
 	$(COMPILER_ALL_OPTIONS) $(ADDITIONAL_INCLUDE) -o $@ -MM $<
