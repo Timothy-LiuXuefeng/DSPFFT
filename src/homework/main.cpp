@@ -3,9 +3,9 @@
 
 int main()
 {
-    ::std::vector<::std::complex<double>> v { 1, 8, 3, ::std::complex<double>(5, 6), 5, 6, 7, 8 };
-    auto r1 = base_2_fft(v);
-    auto r2 = dft(v);
+    ::std::vector<::std::complex<double>> v { 1, 2, 3, 4, 5, 6, 7, 8 };
+    auto r1 = dspfft::base_2_fft(v);
+    auto r2 = dspfft::dft(v);
     ::std::cout.precision(4);
     ::std::cout.flags(::std::ios::fixed);
     for (auto&& z : r1)

@@ -61,7 +61,7 @@ generate_w_n(typename ::std::vector<::std::complex<floating_type>>::size_type n)
 }
 
 // FFT by frequency
-template <typename floating_type, typename = typename ::std::enable_if<::std::is_floating_point<floating_type>::value>::type>
+template <typename floating_type, typename>
 PRIOR_NODISCARD
 ::std::vector<::std::complex<floating_type>>
 base_2_fft(const ::std::vector<::std::complex<floating_type>>& x)
@@ -107,7 +107,7 @@ base_2_fft(const ::std::vector<::std::complex<floating_type>>& x)
 }
 
 // Calculate DFT directly
-template <typename floating_type, typename = typename ::std::enable_if<::std::is_floating_point<floating_type>::value>::type>
+template <typename floating_type, typename>
 PRIOR_NODISCARD
 ::std::vector<::std::complex<floating_type>>
 dft(const ::std::vector<::std::complex<floating_type>>& x)
