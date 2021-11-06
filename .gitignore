@@ -397,3 +397,6 @@ deps/
 
 # MATLAB Code
 result.m
+
+# private notice
+log.txt

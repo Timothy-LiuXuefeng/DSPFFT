@@ -105,10 +105,10 @@ int main_impl(const int argc, const char* const argv[])
 
         ::std::vector<::std::complex<double>> v(points_after_padding, ::std::complex<double>(0, 0));
         point_t i = 0;
-        constexpr auto pi_v = ::prior::numbers::pi_t<double>::value;
         ::std::generate_n(v.begin(), total_points,
-                          [i, sample_rate, pi_v]() mutable
+                          [i, sample_rate]() mutable
                           {
+                              constexpr auto pi_v = ::prior::numbers::pi_t<double>::value;
                               double t = (double)i++ / sample_rate;
                               return 0.8 * ::std::sin(2.0 * pi_v * 103.0 * t)
                                    +       ::std::sin(2.0 * pi_v * 107.0 * t)
