@@ -71,7 +71,7 @@ int main_impl(const int argc, const char* const argv[])
     if (options[0])
     {
         ::std::vector<::std::complex<double>> v;
-        constexpr point_t n_point = ((point_t)1 << 14);
+        constexpr point_t n_point = ((point_t)1 << 15);
         point_t i = 0;
         v.reserve(n_point);
         ::std::generate_n(back_inserter(v), n_point, [i]() mutable noexcept { return ::std::complex<double>((double)++i, 0); });
