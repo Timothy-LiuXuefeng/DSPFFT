@@ -8,12 +8,12 @@ PRIOR_NAMESPACE_BEGIN
 
 PRIOR_EXTERN_C
 char *
-raw_parse_bool_arg(char **arg_pats, int pat_num, int argc, char *argv[])
+raw_parse_bool_arg(const char *const *const arg_pats, int pat_num, int argc, const char *const argv[])
 {
     if (pat_num < 0) return NULL;
     try
     {
-        ::std::vector<char*> arg_pat_vec(pat_num);
+        ::std::vector<const char*> arg_pat_vec(pat_num);
         for (int i = 0; i < pat_num; ++i)
         {
            arg_pat_vec[i] = arg_pats[i];

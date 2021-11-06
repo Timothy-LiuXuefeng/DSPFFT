@@ -394,3 +394,6 @@ deps/
 
 # GNU nano cache file
 *.swp
+
+# MATLAB Code
+result.m

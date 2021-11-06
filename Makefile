@@ -1,7 +1,7 @@
 COMPILER?=g++
 CPP_STANDARD?=-std=c++11
 OPTIMIZATION?=-O2
-WARNING_LEVEL?=-Wall -Wpedantic -Wextra -Werror
+WARNING_LEVEL?=-Wall -Wpedantic -Wextra # -Werror
 PREDEFINED_MACRO?=
 COMPILER_OPTIONS=$(COMPILER) $(CPP_STANDARD) $(OPTIMIZATION) $(WARNING_LEVEL) $(PREDEFINED_MACRO)
 
@@ -23,6 +23,11 @@ test:
 	mkdir -p ./build/test
 	cp ./src/homework/bin/main.out ./build/test/
 	chmod +x ./build/test/main.out
+
+.PHONY: build_and_test
+build_and_test:
+	make build
+	make test
 
 .PHONY: $(PROJECTS)
 $(PROJECTS):

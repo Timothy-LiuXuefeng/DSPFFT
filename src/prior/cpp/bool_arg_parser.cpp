@@ -8,7 +8,7 @@
 PRIOR_NAMESPACE_BEGIN
 
 ::std::vector<char>
-parse_bool_arg(::std::vector<char*> arg_pats, int argc, char* argv[])
+parse_bool_arg(::std::vector<const char*> arg_pats, const int argc, const char* const argv[])
 {
     ::std::unordered_set<::std::string> args_hash;
     for (int i = 1; i < argc; ++i)
