@@ -44,8 +44,9 @@
 #       define PRIOR_CONSTEXPR_IF if
 #   endif
 
+#endif // #ifdef __cplusplus
+
 // libraries
 
-#define REFERENCE_STATIC_LIB(libname) __pragma(comment(lib, #libname))
+#define REFERENCE_STATIC_LIB(libname) __pragma(comment(lib, #libname".lib"))
 
-#endif // #ifdef __cplusplus

@@ -16,7 +16,7 @@
 #endif // #ifdef __cplusplus
 
 #ifndef BUILDING_DSPFFT_LIB
-REFERENCE_STATIC_LIB(dspfft.lib)
+REFERENCE_STATIC_LIB(dspfft)
 #endif // #ifndef BUILDING_DSPFFT_LIB
 
 #endif // #ifndef DSPFFT_DSPFFT_DECL_H__
