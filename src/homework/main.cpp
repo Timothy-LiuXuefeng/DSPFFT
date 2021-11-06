@@ -39,14 +39,16 @@ PRIOR_NODISCARD PRIOR_CXX14_CONSTEXPR PRIOR_FORCED_INLINE static
 T
 ceil_to_pow_of_2(T x)
 {
+    static_assert(sizeof(T) <= 8, "Integer over 8 bytes has not been supported.");
+    static_assert(sizeof(T) == 8 || sizeof(T) == 4 || sizeof(T) == 2 || sizeof(T) == 1, "The size of integer must be power of 2.");
     if (x == 0) return 1;
     auto r = x - 1;
-    r |= r >> 1;
-    r |= r >> 2;
-    r |= r >> 4;
-    r |= r >> 8;
-    r |= r >> 16;
-    r |= r >> 32;
+                                       r |= r >> 1;
+                                       r |= r >> 2;
+                                       r |= r >> 4;
+    PRIOR_CONSTEXPR_IF(sizeof(T) >= 2) r |= r >> 8;
+    PRIOR_CONSTEXPR_IF(sizeof(T) >= 4) r |= r >> 16;
+    PRIOR_CONSTEXPR_IF(sizeof(T) >= 8) r |= r >> 32;
     return r + 1;
 }
 
@@ -72,7 +74,7 @@ int main_impl(const int argc, const char* const argv[])
         constexpr point_t n_point = ((point_t)1 << 14);
         point_t i = 0;
         v.reserve(n_point);
-        ::std::generate_n(back_inserter(v), n_point, [i]() mutable noexcept { return ++i; });
+        ::std::generate_n(back_inserter(v), n_point, [i]() mutable noexcept { return ::std::complex<double>((double)++i, 0); });
 
         auto fft_begin = ::get_milliseconds();
         auto r1 = dspfft::base_2_fft(v);
@@ -105,7 +107,7 @@ int main_impl(const int argc, const char* const argv[])
         point_t i = 0;
         constexpr auto pi_v = ::prior::numbers::pi_t<double>::value;
         ::std::generate_n(v.begin(), total_points,
-                          [i, sample_rate]() mutable
+                          [i, sample_rate, pi_v]() mutable
                           {
                               double t = (double)i++ / sample_rate;
                               return 0.8 * ::std::sin(2.0 * pi_v * 103.0 * t)

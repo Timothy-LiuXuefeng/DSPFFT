@@ -5,4 +5,8 @@
 #include "namespace.h"
 #include "declaration.h"
 
+#ifndef BUILDING_PRIOR_LIB
+REFERENCE_STATIC_LIB(prior.lib)
+#endif // #ifndef BUILDING_PRIOR_LIB
+
 #endif // #ifndef PRIOR_PRIOR_H__

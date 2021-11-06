@@ -56,7 +56,7 @@ generate_w_n(typename ::std::vector<::std::complex<floating_type>>::size_type n)
     using complex_type = ::std::complex<floating_type>;
     ::std::vector<complex_type> w_n(n);
     decltype(n) i = 0;
-    ::std::generate(w_n.begin(), w_n.end(), [n, i]() mutable { return ::std::pow(complex_type(e, 0), complex_type(0, -2.0L * pi * (i++) / n)); });
+    ::std::generate(w_n.begin(), w_n.end(), [n, i, e, pi]() mutable { return ::std::pow(complex_type(e, 0), complex_type(0, static_cast<floating_type>(-2.0L * pi * (i++) / n))); });
     return w_n;
 }
 

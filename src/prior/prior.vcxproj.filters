@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\include">
+      <UniqueIdentifier>{4d4d7048-f53c-41ce-8159-fc4b074c1e1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\include\details">
+      <UniqueIdentifier>{3af79ca0-2369-483d-9a9c-238a522bc9c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cpp">
+      <UniqueIdentifier>{4a76dc6c-df73-4bfb-ad6c-2a573e41dfa0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\bool_arg_parser.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\compiler.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\declaration.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\namespace.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\numbers.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\prior.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\raw_bool_arg_parser.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\details\compiler_clang.i">
+      <Filter>Header Files\include\details</Filter>
+    </None>
+    <None Include="include\details\compiler_gcc.i">
+      <Filter>Header Files\include\details</Filter>
+    </None>
+    <None Include="include\details\compiler_msvc.i">
+      <Filter>Header Files\include\details</Filter>
+    </None>
+    <None Include="Makefile">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cpp\bool_arg_parser.cpp">
+      <Filter>Source Files\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\raw_bool_arg_parser.cpp">
+      <Filter>Source Files\cpp</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
