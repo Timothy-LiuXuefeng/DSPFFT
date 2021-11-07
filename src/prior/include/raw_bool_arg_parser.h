@@ -1,5 +1,5 @@
-#ifndef PRIOR_BOOL_ARG_PARSER_FOR_C_H__
-#define PRIOR_BOOL_ARG_PARSER_FOR_C_H__
+#ifndef PRIOR_RAW_BOOL_ARG_PARSER_H__
+#define PRIOR_RAW_BOOL_ARG_PARSER_H__
 
 #include "prior.h"
 
@@ -12,4 +12,4 @@ raw_parse_bool_arg(const char *const *const arg_pats, const int pat_num, const i
 
 PRIOR_NAMESPACE_END
 
-#endif // #ifndef PRIOR_BOOL_ARG_PARSER_FOR_C_H__
+#endif // #ifndef PRIOR_RAW_BOOL_ARG_PARSER_H__
