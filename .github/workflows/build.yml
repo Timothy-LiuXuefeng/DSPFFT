@@ -1,0 +1,19 @@
+name: build
+
+on:
+    push:
+        branches: [ master ]
+    pull_request:
+        branches: [ master ]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        -   uses: actions/checkout@v2
+        -   name: build library
+            run: make build -j8 COMPILER=g++ CPP_STANDARD=-std=c++17
+        -   name: build test program
+            run: make test -j8 COMPILER=g++ CPP_STANDARD=-std=c++17
+        -   name: clean built
+            run: make clean -j8
