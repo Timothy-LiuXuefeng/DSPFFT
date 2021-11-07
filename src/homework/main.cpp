@@ -184,10 +184,14 @@ int main_impl(const int argc, const char* const argv[])
             return sout.str();
         };
 
-#ifdef TRANSFORM_TO_CRLF_NEWLINE
-#   define NEWLINE "\r\n"
-#else
+#ifdef _WIN32
 #   define NEWLINE "\n"
+#else
+#   ifdef TRANSFORM_TO_CRLF_NEWLINE
+#       define NEWLINE "\r\n"
+#   else
+#       define NEWLINE "\n"
+#   endif
 #endif
 
         ::std::ofstream fout("result.m", ::std::ios::out);
@@ -216,7 +220,7 @@ int main_impl(const int argc, const char* const argv[])
 
         {
             point_t sample_rate = 300;
-            point_t sample_points[] = { 300, 600, 1024 };
+            point_t sample_points[] = { 50, 300, 800 };
             point_t total_points = 1024;
             auto num = sizeof(sample_points) / sizeof(point_t);
             for (int i = 0; i < (int)num; ++i)
@@ -236,7 +240,7 @@ int main_impl(const int argc, const char* const argv[])
 
         {
             point_t sample_rate = 300;
-            point_t sample_points = 1024;
+            point_t sample_points = 300;
             point_t total_points[] = { 1024, 1024 * 2, 1024 * 8 };
             auto num = sizeof(total_points) / sizeof(point_t);
             for (int i = 0; i < (int)num; ++i)
@@ -269,7 +273,7 @@ int main_impl(const int argc, const char* const argv[])
                 fout << "title({\'sample rate: " << sample_rate
                      << "\', \'sample points: " << sample_points
                      << "\', \'transfrom points: " << total_points
-                     << "\', \'use hanning window: " << (use_window ? "yes" : "no")
+                     << "\', \'window: " << (use_window ? "hanning" : "rectangle")
                      << "\'});" NEWLINE;
             };
 
