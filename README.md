@@ -97,3 +97,8 @@ Declared in `<dspfft.h>`. When included by C++ files, all APIs are in the namesp
 + `complexf *base_2_fftf(complexf *, size_t)`, `complexl *base_2_fftl(complexl *, size_t)`, `complexll *base_2_fftll(complexll *, size_t)`
 + `complexf *dftf(complexf *, size_t)`, `complexl *dftl(complexl *, size_t)`, `complexll *dftll(complexll *, size_t)`
 
+## Notice
+
++ When using C language to call the library dspfft, you should link C++ runtime manually for this library is written in C++.  
++ If you want to run the test program on Linux and run the MATLAB Code generated with MATLAB for Windows, be sure to define `TRANSFORM_TO_CRLF_NEWLINE` macro to generate code with CRLF newline character. 
+
