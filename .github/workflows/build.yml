@@ -12,8 +12,8 @@ jobs:
         steps:
         -   uses: actions/checkout@v2
         -   name: build library
-            run: make build -j8 COMPILER=g++ CPP_STANDARD=-std=c++17
+            run: make build COMPILER=g++ CPP_STANDARD=-std=c++17
         -   name: build test program
-            run: make test -j8 COMPILER=g++ CPP_STANDARD=-std=c++17
+            run: make test COMPILER=g++ CPP_STANDARD=-std=c++17
         -   name: clean built
-            run: make clean -j8
+            run: make clean
