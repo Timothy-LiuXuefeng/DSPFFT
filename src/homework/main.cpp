@@ -195,7 +195,7 @@ int main_impl(const int argc, const char* const argv[])
         ::std::cout << "\nCompare sample rates:\n" << ::std::endl;
 
         {
-            point_t sample_rates[] = { 100, 300, 800 };
+            point_t sample_rates[] = { 150, 300, 800 };
             point_t sample_points = 800;
             point_t total_points = ceil_to_pow_of_2(sample_points);
             auto num = sizeof(sample_rates) / sizeof(point_t);
