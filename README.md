@@ -2,7 +2,7 @@
 
 ## Description
 
-The first curriculum design of Digital Signal Processing.  
+The first curriculum design of Digital Signal Processing, FFT  
 
 ## Supported Compiler
 
@@ -23,7 +23,7 @@ The first curriculum design of Digital Signal Processing.
   make build [options]
   ```
 
-  The `options` canbe:
+  The `options` can be:
 
   + `COMPILER`: Specify the compiler you want t build with. The value can be `g++` or `clang++`. `g++` by default.
   + `CPP_STANDARD`: Specify the C++ language standard. The value can be `-std=c++11`, `-std=c++14`, `-std=c++17`, `-std=gnu++11`, `-std=gnu++14`, `-std=gnu++17`, etc. The default value is `-std=c++11`.
@@ -31,15 +31,21 @@ The first curriculum design of Digital Signal Processing.
   + `WARNING_LEVEL`: Specify the warning level. The default value is `-Wall -Wpedantic -Wextra`
   + `PREDEFINED_MACRO`: Specify predefined macros, such as `-DUNICODE`. Empty by default.  
 
-  Then the library will be in the "build" directory. The binary library will be `build/bin/libdspfft.a` and its header file will be in the `build/include` directory.  
+  Example:   
 
-+ Build execuation
+  ```sh
+  make build CPP_STANDARD=-std=c++17 COMPILER=clang++
+  ```
+
+  Then the library will be in the `build` directory. The binary library will be `build/bin/libdspfft.a` and its header file will be in the `build/include` directory.  
+
++ Build test program
 
   ```sh
   make test [options]
   ```
 
-  The options are the same as that in 'Building library'. And when `PREDEFINED_MACRO` contains `-DTRANSFORM_TO_CRLF_NEWLINE`  , the program will generate MATLAB code with CRLF newline character (which is essential for MATLAB for Windows to run). Otherwise, the newline character will be LF.  
+  The `options` is the same as that in 'Building library'. And when `PREDEFINED_MACRO` contains `-DTRANSFORM_TO_CRLF_NEWLINE`  , the program will generate MATLAB code with CRLF newline character (which is essential for MATLAB for Windows to run). Otherwise, the newline character will be LF.  
 
   The execuation will be `build/test/main.out`.  
 
@@ -65,7 +71,7 @@ The first curriculum design of Digital Signal Processing.
 
 ### Windows
 
-Enter the directory `src`, open `DSPFFT.sln` with Visual Studio 2019 or later versions, choose a platfrom (Release x64 recommended) and then build the solution. Then run `publish.cmd` to publish libraries and execuations. The binary library will be `publish\bin\dspfft.lib`, whose header files will be in `publish\include`, and the execuation will be `publish\test\homework.exe`. Notice that `publish.cmd` is used for Release | x64 platfrom by default. To change platform, please edit it and change the value of the variable `BINARY_DIR`.  
+Enter the directory `src`, open `DSPFFT.sln` with Visual Studio 2019 or later versions, choose a target platfrom (Release | x64 recommended) and then build the solution. Then run `publish.cmd` to publish libraries and test programs. The binary library will be `publish\bin\dspfft.lib`, whose header files will be in `publish\include`, and the execuation will be `publish\test\homework.exe`. Notice that `publish.cmd` is used for Release | x64 platfrom by default. To change platform, please edit it and change the value of the variable `BINARY_DIR`.  
 
 To clean up, you can run `clean_publish.cmd`.  
 
@@ -82,16 +88,16 @@ You should include the header file `dspfft.hpp` in C++ and include `dspfft.h` in
 
 The APIs are as follows: 
 
-### C++ APIs
+### C++ API
 
 Declared in `<dspfft.hpp>`. All APIs are in the namespace `dspfft`.  
 
 + `template <typename floating_type> ::std::vector<::std::complex<floating_type>> base_2_fft(const ::std::vector<::std::complex<floating_type>>& x)`  
 + `template <typename floating_type> ::std::vector<::std::complex<floating_type>> dft(const ::std::vector<::std::complex<floating_type>>& x)`  
 
-### C APIs
+### C API
 
-Declared in `<dspfft.h>`. When included by C++ files, all APIs are in the namespace `dspfft` and all functions are declared with C linkage (`extern "C"`).  
+Declared in `<dspfft.h>`. When included by C++ files, all APIs are in the namespace `dspfft` and all functions are declared with C language linkage (`extern "C"`).  
 
 + `complexf`, `complexl`, `complexll`: Structures of complex number for `float`, `double` and `long double`.  
 + `complexf *base_2_fftf(complexf *, size_t)`, `complexl *base_2_fftl(complexl *, size_t)`, `complexll *base_2_fftll(complexll *, size_t)`
@@ -100,5 +106,5 @@ Declared in `<dspfft.h>`. When included by C++ files, all APIs are in the namesp
 ## Notice
 
 + When using C language to call the library dspfft, you should link C++ runtime manually for this library is written in C++.  
-+ If you want to run the test program on Linux and run the MATLAB Code generated with MATLAB for Windows, be sure to define `TRANSFORM_TO_CRLF_NEWLINE` macro to generate code with CRLF newline character. 
++ If you want to run the test program on Linux and run the MATLAB Code generated with MATLAB for Windows, be sure to define `TRANSFORM_TO_CRLF_NEWLINE` macro when building to generate code with CRLF newline character. 
 
