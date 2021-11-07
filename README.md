@@ -25,7 +25,7 @@ The first curriculum design of Digital Signal Processing, FFT
 
   The `options` can be:
 
-  + `COMPILER`: Specify the compiler you want t build with. The value can be `g++` or `clang++`. `g++` by default.
+  + `COMPILER`: Specify the compiler you want to build with. The value can be `g++` or `clang++`. `g++` by default.
   + `CPP_STANDARD`: Specify the C++ language standard. The value can be `-std=c++11`, `-std=c++14`, `-std=c++17`, `-std=gnu++11`, `-std=gnu++14`, `-std=gnu++17`, etc. The default value is `-std=c++11`.
   + `OPTIMIZATION`: Specify the level of optimization. The value can be `-O0`, `-O1`, `-Os`, etc. `-O2` by default.  
   + `WARNING_LEVEL`: Specify the warning level. The default value is `-Wall -Wpedantic -Wextra`
@@ -47,7 +47,7 @@ The first curriculum design of Digital Signal Processing, FFT
 
   The `options` is the same as that in 'Building library'. And when `PREDEFINED_MACRO` contains `-DTRANSFORM_TO_CRLF_NEWLINE`  , the program will generate MATLAB code with CRLF newline character (which is essential for MATLAB for Windows to run). Otherwise, the newline character will be LF.  
 
-  The execuation will be `build/test/main.out`.  
+  The executable file will be `build/test/main.out`.  
 
 + Build all
 
@@ -71,13 +71,13 @@ The first curriculum design of Digital Signal Processing, FFT
 
 ### Windows
 
-Enter the directory `src`, open `DSPFFT.sln` with Visual Studio 2019 or later versions, choose a target platfrom (Release | x64 recommended) and then build the solution. Then run `publish.cmd` to publish libraries and test programs. The binary library will be `publish\bin\dspfft.lib`, whose header files will be in `publish\include`, and the execuation will be `publish\test\homework.exe`. Notice that `publish.cmd` is used for Release | x64 platfrom by default. To change platform, please edit it and change the value of the variable `BINARY_DIR`.  
+Enter the directory `src`, open `DSPFFT.sln` with Visual Studio 2019 or later versions, choose a target platfrom (Release | x64 recommended) and then build the solution. Then run `publish.cmd` to publish libraries and test programs. The binary library will be `publish\bin\dspfft.lib`, whose header files will be in `publish\include`, and the executable file will be `publish\test\homework.exe`. Notice that `publish.cmd` is used for Release | x64 platfrom by default. To change platform, please edit it and change the value of the variable `BINARY_DIR`.  
 
 To clean up, you can run `clean_publish.cmd`.  
 
 ## How to run test program
 
-The execuation is `build/test/main.out` on Linux and `homework.exe` on Windows. When running this program, you can pass parameters as follows: 
+The executable file is `build/test/main.out` on Linux and `homework.exe` on Windows. When running this program, you can pass parameters as follows: 
 
 +  `--enable-time-comparing`: Compare time consumed using FFT and that using DFT directly.  
 + `--writing-matlab-code-to-file`: Generate MATLAB Code and write it into `result.m`, which can be run by MATLAB.  
