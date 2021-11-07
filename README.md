@@ -108,3 +108,5 @@ Declared in `<dspfft.h>`. When included by C++ files, all APIs are in the namesp
 + When using C language to call the library dspfft, you should link C++ runtime manually for this library is written in C++.  
 + If you want to run the test program on Linux and run the MATLAB Code generated with MATLAB for Windows, be sure to define `TRANSFORM_TO_CRLF_NEWLINE` macro when building to generate code with CRLF newline character. 
 
+[中文（简体）](./README_zh_CN.md)
+
