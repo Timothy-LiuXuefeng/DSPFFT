@@ -10,8 +10,8 @@ The first curriculum design of Digital Signal Processing, FFT
 | :-------------: | :--------------: | :----: | :-----------------: | :-----------------: | :-----------------: |
 | GCC 7 \~ GCC 11 |   Linux x86-64   | `-m64` | Perfectly supported | Perfectly supported | Perfectly supported |
 |    Clang 12     |   Linux x86-64   | `-m64` | Perfectly supported | Perfectly supported | Perfectly supported |
-|     MSVC 19     | Windows (64-bit) |  x64   |    Not supported    |      Supported      |      Supported      |
-|     MSVC 19     | Windows (64-bit) |  x86   |    Not supported    |  Compiler warnings  |      Supported      |
+|    MSVC 19.2    | Windows (64-bit) |  x64   |    Not supported    |      Supported      |      Supported      |
+|    MSVC 19.2    | Windows (64-bit) |  x86   |    Not supported    |  Compiler warnings  |      Supported      |
 
 ## How to build
 
