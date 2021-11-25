@@ -97,7 +97,7 @@ C++ 语言应当包含头文件 `dspfft.hpp`，C 语言应当包含 `dspfft.h`�
 
 ### C 接口
 
-接口在 `<dspfft.h>` 中生命。当使用 C++ 语言包含时，所有接口都定义在 `dspfft` 命名空间中，所有函数都被声明为具有 C 语言链接（`extern "C"`）。  
+接口在 `<dspfft.h>` 中声明。当使用 C++ 语言包含时，所有接口都定义在 `dspfft` 命名空间中，所有函数都被声明为具有 C 语言链接（`extern "C"`）。  
 
 + `complexf`, `complexl`, `complexll`：实部和虚部分别为`float`, `double` and `long double` 的复数结构体  
 + `complexf *base_2_fftf(complexf *, size_t)`, `complexl *base_2_fftl(complexl *, size_t)`, `complexll *base_2_fftll(complexll *, size_t)`
