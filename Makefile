@@ -37,9 +37,8 @@ CLEAN_PROJECTS=$(patsubst %,clean_%,$(PROJECTS))
 
 .PHONY: clean, CLEAN_PROJECTS
 clean: $(CLEAN_PROJECTS)
+	-rm -rf ./build
 
 $(CLEAN_PROJECTS):
-	-rm -rf ./build/*
-	-rmdir ./build
 	make -C ./src/homework clean
 	make -C $(patsubst clean_%,./src/%,$@) clean
