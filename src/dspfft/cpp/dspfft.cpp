@@ -10,7 +10,7 @@
 DSPFFT_NAMESPACE_BEGIN
 
 // calculate log2(x)
-template <typename T, typename = typename ::std::enable_if<::std::is_unsigned<T>::value>::type>
+template <typename T, typename ::std::enable_if<::std::is_unsigned<T>::value, bool>::type = true>
 PRIOR_NODISCARD PRIOR_CXX14_CONSTEXPR PRIOR_FORCED_INLINE
 T
 get_log_2_of_base_2(T x)
@@ -23,7 +23,7 @@ get_log_2_of_base_2(T x)
     return cnt;
 }
 
-template <typename T, typename = typename ::std::enable_if<::std::is_unsigned<T>::value>::type>
+template <typename T, typename ::std::enable_if<::std::is_unsigned<T>::value, bool>::type = true>
 PRIOR_NODISCARD PRIOR_CXX14_CONSTEXPR PRIOR_FORCED_INLINE
 T
 reverse_bit(T x)
@@ -46,7 +46,7 @@ reverse_bit(T x)
 }
 
 // Generate w_N for DFT
-template <typename floating_type, typename = typename ::std::enable_if<::std::is_floating_point<floating_type>::value>::type>
+template <typename floating_type, typename ::std::enable_if<::std::is_floating_point<floating_type>::value, bool>::type = true>
 PRIOR_NODISCARD PRIOR_FORCED_INLINE
 ::std::vector<::std::complex<floating_type>>
 generate_w_n(typename ::std::vector<::std::complex<floating_type>>::size_type n)
